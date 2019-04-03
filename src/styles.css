@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.table-sm td, .table-sm th {
+
+    padding: .4
+    rem;
+    font-size: 80%;
+}
+
+.table td, .table th {
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+}
+
+input[type="checkbox"] {
+    vertical-align: middle;
+}

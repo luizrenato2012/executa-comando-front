@@ -1,0 +1,25 @@
+<div class="container">
+  <h5>Execução de Script em Servidores</h5> 
+  <table class="table table-sm table-bordered">
+    <thead>
+      <th>Host</th><th>Database</th>
+      <th>Host</th> <th>Database</th>
+      <th>Host</th> <th>Database</th>
+      <th>Host</th> <th>Database</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{itens[0].numero}}.  <input type="checkbox" name="1">  {{itens[0].host}}</td>    <td>{{itens[0].database}}</td>
+        
+        <td>{{itens[1].numero}}. <input type="checkbox" name="2"> {{itens[1].host}}</td>    <td>{{itens[1].database}}</td>
+
+        <td>{{itens[2].numero}}. <input type="checkbox" name="3"> {{itens[2].host}}</td>    <td>{{itens[2].database}}</td>
+
+        <td>{{itens[3].numero}}. <input type="checkbox" name="4">{{itens[3].host}}</td>    <td>{{itens[3].database}}</td>
+      </tr>
+    </tbody>
+  </table>  
+  
+  <button type="button" class="btn btn-primary" (click)="exibeAlerta()" >OK</button>
+
+</div>
