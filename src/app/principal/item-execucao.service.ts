@@ -6,20 +6,68 @@ import { ItemExecucao } from './item-execucao';
 })
 export class ItemExecucaoService {
 
-  itens : ItemExecucao[];
+  itens1 : ItemExecucao[];
+  itens2 : ItemExecucao[];
+  itens3 : ItemExecucao[];
+  itens4 : ItemExecucao[];
 
   constructor() {
     this.init();
    }
 
   init() {
-    this.itens = [];
-    this.itens.push( new ItemExecucao(0,'172.16.40.218','socic_gefi_20190110'));
-    this.itens.push( new ItemExecucao(1,'172.16.40.218','socic_mar_20190228'));
-    this.itens.push( new ItemExecucao(2,'172.16.40.226','socic_bgc_20170927'));
-    this.itens.push( new ItemExecucao(3,'172.16.40.138','socic'));
+    this.itens1 = [];
+    this.itens1.push( new ItemExecucao(0,'172.18.110.2','socic_bnv'));
+    this.itens1.push( new ItemExecucao(1,'172.18.120.1','socic_sti'));
+    this.itens1.push( new ItemExecucao(2,'172.18.1.1','socic_aba'));
+    this.itens1.push( new ItemExecucao(3,'172.18.1.1','socic_aba_ponto'));
+
+    this.itens2 = [];
+    this.itens2.push( new ItemExecucao(0,'172.18.20.1','socic_bgc_ponto'));
+    this.itens2.push( new ItemExecucao(1,'172.19.20.1','socic_sdn'));
+    this.itens2.push( new ItemExecucao(2,'172.19.20.1','socic_sdn_ponto'));
+    this.itens2.push( new ItemExecucao(3,'172.19.40.1','socic_bao'));
+
+    this.itens3 = [];
+    this.itens3.push( new ItemExecucao(0,'172.16.61.4','socic_lmc'));
+    this.itens3.push( new ItemExecucao(1,'172.16.61.4','socic_lms_ponto'));
+    this.itens3.push( new ItemExecucao(2,'172.19.155.1','socic_tmc'));
+    this.itens3.push( new ItemExecucao(3,'172.19.135.200','socic_mju'));
+
+    this.itens4 = [];
+    this.itens4.push( new ItemExecucao(0,'172.17.180.1','socic_coa'));
+    this.itens4.push( new ItemExecucao(1,'172.16.60.4','socic_sll'));
+    this.itens4.push( new ItemExecucao(2,'172.16.112.1','socic_sfx'));
+    this.itens4.push( new ItemExecucao(3,'172.19.25.1','socic_vir'));
 
   }
 
- 
+  marcaItens(marca:boolean) {
+    console.log(`Marca todos ${marca}`);
+    this.itens1[0].marcado = marca;
+    this.itens1[1].marcado = marca;
+
+    this.itens2[0].marcado = marca;
+    this.itens2[1].marcado = marca;
+
+    this.itens3[0].marcado = marca;
+    this.itens3[1].marcado = marca;
+
+    this.itens4[0].marcado = marca;
+    this.itens4[1].marcado = marca;
+  }
+
+  getItensMarcados() {
+    console.log('Itens marcados ');
+    let itens = this.itens1.filter(item=> item.marcado);
+    this.itens2.filter(item=>item.marcado)
+      .forEach( item => itens.push(item));
+    this.itens3.filter(item=>item.marcado)
+    .forEach( item => itens.push(item));  
+    this.itens4.filter(item=>item.marcado)
+      .forEach( item => itens.push(item));
+      return itens;
+  }
+
+  
 }

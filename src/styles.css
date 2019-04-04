@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.principal {
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
 .table-sm td, .table-sm th {
 
     padding: .4
@@ -13,4 +18,15 @@
 
 input[type="checkbox"] {
     vertical-align: middle;
+}
+
+textarea {
+    resize: horizontal;
+    width: 100%;
+    min-height: 150px;
+    font-size: 50%;
+}
+
+.btnPadrao {
+    margin: 5px;
 }

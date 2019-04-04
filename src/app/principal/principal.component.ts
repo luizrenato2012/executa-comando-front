@@ -9,33 +9,38 @@ import { ItemExecucao } from './item-execucao';
 })
 export class PrincipalComponent implements OnInit {
 
-  itens : ItemExecucao[];
-  host0=false;
-  host1=false;
-  host2=false;
-  host3=false;
+  itens1 : ItemExecucao[];
+  itens2 : ItemExecucao[];
+  itens3 : ItemExecucao[];
+  itens4 : ItemExecucao[];
+  saida="";
+  comando="";
+  marcaItens = false;
 
   constructor(private itemExecucaoService : ItemExecucaoService) {
-    this.itens = [];
-   }
+  }
 
   ngOnInit() {
     console.log("Iniciando formulario");
-    this.itens = this.itemExecucaoService.itens;
-    //for(let i=0; i < this.itens.length; i++) {
-    //  console.log( this.itens[i]);
-   // }
+    this.itens1 = this.itemExecucaoService.itens1;
+    this.itens2 = this.itemExecucaoService.itens2;
+    this.itens3 = this.itemExecucaoService.itens3;
+    this.itens4 = this.itemExecucaoService.itens4;
   }
 
-  seleciona() {
-    console.log(`${this.host0} - ${this.host1} - ${this.host2} - ${this.host3}`);
+  executa() {
+    console.log('Executando comando '+ this.itens1);
+    console.log("total de itens marcados " + this.itemExecucaoService.getItensMarcados().length);
+    this.itemExecucaoService.getItensMarcados().forEach(item => console.log(`${item.host} - ${item.database}`));
   }
 
   marcaTodos() {
-    this.host0=!this.host0;
-    this.host1=!this.host1;
-    this.host2=!this.host2;
-    this.host3=!this.host3;
+    console.log(`Marca todos 2 ${this.marcaItens}`);
+    this.itemExecucaoService.marcaItens(!this.marcaItens);
+  }
+
+  limpaSaida() {
+    this.saida="";
   }
 
 }

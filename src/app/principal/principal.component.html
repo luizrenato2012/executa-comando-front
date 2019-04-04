@@ -1,68 +1,86 @@
-<div class="container">
+<div class="principal">
   <h5>Execução de Script em Servidores</h5>
-  <input type="checkbox"  (click)="marcaTodos()"/>Todos
-  <div class="container">
+  <input type="checkbox" [(ngModel)]="marcaItens" (click)="marcaTodos()"/>Todos
     <div class="row">
       <div class="col-sm">
-        <table class="table table-sm table-bordered">
+        <table class="table table-sm table-bordered" id="tab1">
           <thead>
             <th>Host</th>
             <th>Database</th>
           </thead>
           <tbody>
             <tr>
-              <td>{{itens[0].numero}}. <input type="checkbox" name="host0" [(ngModel)]="host0"> {{itens[0].host}}</td>
-              <td>{{itens[0].database}}</td>
+              <td>{{itens1[0].numero}}. <input type="checkbox" [(ngModel)]="itens1[0].marcado"> {{itens1[0].host}}</td>
+              <td>{{itens1[0].database}}</td>
+            </tr>
+            <tr>
+              <td>{{itens1[1].numero}}. <input type="checkbox" [(ngModel)]="itens1[1].marcado"> {{itens1[1].host}}</td>
+              <td>{{itens1[1].database}}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="col-sm">
-        <table class="table table-sm table-bordered">
+        <table class="table table-sm table-bordered" id="tab2">
           <thead>
             <th>Host</th>
             <th>Database</th>
           </thead>
           <tbody>
             <tr>
-              <td>{{itens[1].numero}}. <input type="checkbox" name="host1" [(ngModel)]="host1"> {{itens[1].host}}</td>
-              <td>{{itens[1].database}}</td>
+              <td>{{itens2[0].numero}}. <input type="checkbox" [(ngModel)]="itens2[0].marcado"> {{itens2[0].host}}</td>
+              <td>{{itens2[0].database}}</td>
+            </tr>
+            <tr>
+              <td>{{itens2[1].numero}}. <input type="checkbox" [(ngModel)]="itens2[1].marcado"> {{itens2[1].host}}</td>
+              <td>{{itens2[1].database}}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="col-sm">
-        <table class="table table-sm table-bordered">
+        <table class="table table-sm table-bordered" id="tab3">
           <thead>
             <th>Host</th>
             <th>Database</th>
           </thead>
           <tbody>
             <tr>
-              <td>{{itens[2].numero}}. <input type="checkbox" name="2" name="host2" [(ngModel)]="host2"> {{itens[2].host}}</td>
-              <td>{{itens[2].database}}</td>
+              <td>{{itens3[0].numero}}. <input type="checkbox" [(ngModel)]="itens3[0].marcado"> {{itens3[0].host}}</td>
+              <td>{{itens3[0].database}}</td>
+            </tr>
+            <tr>
+              <td>{{itens3[1].numero}}. <input type="checkbox" [(ngModel)]="itens3[1].marcado"> {{itens3[1].host}}</td>
+              <td>{{itens3[1].database}}</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div class="col-sm">
-        <table class="table table-sm table-bordered">
+        <table class="table table-sm table-bordered" id="tab4">
           <thead>
             <th>Host</th>
             <th>Database</th>
           </thead>
           <tbody>
             <tr>
-              <td>{{itens[3].numero}}. <input type="checkbox" name="3" name="host3" [(ngModel)]="host3"> {{itens[2].host}}</td>
-              <td>{{itens[3].database}}</td>
+              <td>{{itens4[0].numero}}. <input type="checkbox" [(ngModel)]="itens4[0].marcado"> {{itens4[0].host}}</td>
+              <td>{{itens4[0].database}}</td>
+            </tr>
+            <tr>
+              <td>{{itens4[1].numero}}. <input type="checkbox" [(ngModel)]="itens4[1].marcado"> {{itens4[1].host}}</td>
+              <td>{{itens4[1].database}}</td>
             </tr>
           </tbody>
         </table>
-      </div>
     </div>
   </div>
 
-  <button type="button" class="btn btn-primary" (click)="seleciona()">OK</button>
+  <br/> Comando <button type="button" class="btn btn-primary btnPadrao" (click)="executa()">Executa</button> <br/>
+  <textarea [(ngModel)]='comando'></textarea>
+  <br/>
+  <br/> Saida <button (click)="limpaSaida()" class="btn btn-primary btnPadrao"> Limpa</button> <br/>
+  <textarea>{{saida}}</textarea>
 
 </div>

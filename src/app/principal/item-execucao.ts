@@ -1,6 +1,17 @@
+import { Host } from '@angular/core';
+
 export class ItemExecucao {
     
-    constructor(private numero: number, private host : string, private database:string) {
+    marcado=false;
+    numero: number;
+    host : string;
+    database:string;
 
+    constructor( numero: number, host : string, database:string) {
+        this.numero=numero;
+        this.host=host;
+        this.database=database;
     }
+
+   
 }
