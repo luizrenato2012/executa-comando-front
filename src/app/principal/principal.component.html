@@ -1,25 +1,68 @@
 <div class="container">
-  <h5>Execução de Script em Servidores</h5> 
-  <table class="table table-sm table-bordered">
-    <thead>
-      <th>Host</th><th>Database</th>
-      <th>Host</th> <th>Database</th>
-      <th>Host</th> <th>Database</th>
-      <th>Host</th> <th>Database</th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{itens[0].numero}}.  <input type="checkbox" name="1">  {{itens[0].host}}</td>    <td>{{itens[0].database}}</td>
-        
-        <td>{{itens[1].numero}}. <input type="checkbox" name="2"> {{itens[1].host}}</td>    <td>{{itens[1].database}}</td>
+  <h5>Execução de Script em Servidores</h5>
+  <input type="checkbox"  (click)="marcaTodos()"/>Todos
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <table class="table table-sm table-bordered">
+          <thead>
+            <th>Host</th>
+            <th>Database</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{itens[0].numero}}. <input type="checkbox" name="host0" [(ngModel)]="host0"> {{itens[0].host}}</td>
+              <td>{{itens[0].database}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm">
+        <table class="table table-sm table-bordered">
+          <thead>
+            <th>Host</th>
+            <th>Database</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{itens[1].numero}}. <input type="checkbox" name="host1" [(ngModel)]="host1"> {{itens[1].host}}</td>
+              <td>{{itens[1].database}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm">
+        <table class="table table-sm table-bordered">
+          <thead>
+            <th>Host</th>
+            <th>Database</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{itens[2].numero}}. <input type="checkbox" name="2" name="host2" [(ngModel)]="host2"> {{itens[2].host}}</td>
+              <td>{{itens[2].database}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <td>{{itens[2].numero}}. <input type="checkbox" name="3"> {{itens[2].host}}</td>    <td>{{itens[2].database}}</td>
+      <div class="col-sm">
+        <table class="table table-sm table-bordered">
+          <thead>
+            <th>Host</th>
+            <th>Database</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{itens[3].numero}}. <input type="checkbox" name="3" name="host3" [(ngModel)]="host3"> {{itens[2].host}}</td>
+              <td>{{itens[3].database}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-        <td>{{itens[3].numero}}. <input type="checkbox" name="4">{{itens[3].host}}</td>    <td>{{itens[3].database}}</td>
-      </tr>
-    </tbody>
-  </table>  
-  
-  <button type="button" class="btn btn-primary" (click)="exibeAlerta()" >OK</button>
+  <button type="button" class="btn btn-primary" (click)="seleciona()">OK</button>
 
 </div>

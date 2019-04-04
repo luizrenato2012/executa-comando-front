@@ -10,6 +10,10 @@ import { ItemExecucao } from './item-execucao';
 export class PrincipalComponent implements OnInit {
 
   itens : ItemExecucao[];
+  host0=false;
+  host1=false;
+  host2=false;
+  host3=false;
 
   constructor(private itemExecucaoService : ItemExecucaoService) {
     this.itens = [];
@@ -18,15 +22,20 @@ export class PrincipalComponent implements OnInit {
   ngOnInit() {
     console.log("Iniciando formulario");
     this.itens = this.itemExecucaoService.itens;
-    for(let i=0; i < this.itens.length; i++) {
-      console.log( this.itens[i]);
-    }
+    //for(let i=0; i < this.itens.length; i++) {
+    //  console.log( this.itens[i]);
+   // }
   }
 
-  exibeAlerta() {
-    if (confirm('Confirma execucao do comando ?')) {
-      alert('Comando executado ');
-    }
+  seleciona() {
+    console.log(`${this.host0} - ${this.host1} - ${this.host2} - ${this.host3}`);
+  }
+
+  marcaTodos() {
+    this.host0=!this.host0;
+    this.host1=!this.host1;
+    this.host2=!this.host2;
+    this.host3=!this.host3;
   }
 
 }
