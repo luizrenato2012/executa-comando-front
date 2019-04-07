@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemExecucaoService } from './item-execucao.service';
 import { ItemExecucao } from './item-execucao';
+import { MenssageriaService } from '../services/menssageria.service';
+import { Subscription } from 'rxjs';
+
+const WEBSCOKET_URL="ws://localhost:8080/webserver";
+const MESSAGE_URL="/topic/respostas";
 
 @Component({
   selector: 'app-principal',
@@ -17,7 +22,36 @@ export class PrincipalComponent implements OnInit {
   comando="";
   marcaItens = false;
 
-  constructor(private itemExecucaoService : ItemExecucaoService) {
+  // comunicacao websocket
+  messageFromServer: string;
+  wsSubscription: Subscription;
+  private messageService : MenssageriaService;
+
+  constructor( private itemExecucaoService : ItemExecucaoService) {
+    this.messageService = new MenssageriaService (this);
+    this.messageService.conecta();
+  }
+
+  setMessageFromServer(message) {
+    this.messageFromServer = message;
+  }
+
+  enviaAcao() {
+    console.log("Enviando mensagem");
+   this.messageService.enviaMensagem(
+      JSON.stringify(
+        {'host':'localhost', 
+        'database':'executa', 
+        'comando': 'select'})
+    );
+  }
+
+  fechaConexa() {
+    this.messageService.desconecta();
+  }
+
+  atualizaSaida(texto : string) {
+    this.saida = this.saida+texto+"\n";
   }
 
   ngOnInit() {
