@@ -21,11 +21,11 @@ export class MenssageriaService {
     this.stompClient = Stomp.over(socket);
 
     this.stompClient.connect({}, (frame)=>{
-       console.log('Conectado '+ frame); 
+       //console.log('Conectado '+ frame); 
        this.stompClient.subscribe('/topic/respostas', (resposta) =>{
-        let retorno =  resposta.body;
-        console.log('Recebido ' + JSON.stringify(retorno));
-        this.observador.atualizaSaida(retorno);
+        let retorno =  JSON.parse(resposta.body);
+        console.log('Recebido ' + retorno);
+        this.observador.atualizaSaida(retorno.mensagem);
        });
     });
   }
@@ -41,8 +41,6 @@ export class MenssageriaService {
   enviaMensagem(message: string) {
     this.stompClient.send(
       '/app/executa', 
-      {},
-      JSON.stringify({'host':'localhost', 'database':'pedidodb', 'comando': 'select'})
-      );
+      {}, message );
   }
 }

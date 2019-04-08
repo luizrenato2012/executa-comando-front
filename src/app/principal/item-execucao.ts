@@ -6,6 +6,7 @@ export class ItemExecucao {
     numero: number;
     host : string;
     database:string;
+    comando: string;
 
     constructor( numero: number, host : string, database:string) {
         this.numero=numero;

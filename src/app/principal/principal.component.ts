@@ -38,12 +38,41 @@ export class PrincipalComponent implements OnInit {
 
   enviaAcao() {
     console.log("Enviando mensagem");
-   this.messageService.enviaMensagem(
-      JSON.stringify(
-        {'host':'localhost', 
-        'database':'executa', 
-        'comando': 'select'})
-    );
+    if (!this.validaComando()) {
+      return;
+    }
+
+    let itensSelecionados = this.itemExecucaoService.getItensMarcados();
+    console.log('Total de itens selecioandos ' + itensSelecionados.length);
+    if (!this.validaSelecao(itensSelecionados)) {
+      return;
+    }
+
+    let itemSelecionado = {}; 
+    for (let i=0; i < itensSelecionados.length; i++) {
+      itemSelecionado = itensSelecionados[i];
+      itemSelecionado.comando = this.comando;
+      console.log('iTEM ENVIADO ' + itemSelecionado);
+      this.messageService.enviaMensagem(
+        JSON.stringify (itemSelecionado)
+      );
+    }
+  }
+
+  validaComando():boolean {
+    if (this.comando==null || this.comando==='') {
+      alert('Digite algum comando !!!');
+      return false;
+    }
+    return true;
+  }
+
+  validaSelecao(itensSelecionados : ItemExecucao[] ): boolean {
+    if(itensSelecionados==null || itensSelecionados==undefined || itensSelecionados.length==0) {
+      alert('Selecione algum banco de dados!!!');
+      return false;
+    }
+    return true;
   }
 
   fechaConexa() {
