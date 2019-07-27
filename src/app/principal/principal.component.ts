@@ -3,6 +3,7 @@ import { ItemExecucaoService } from './item-execucao.service';
 import { ItemExecucao } from './item-execucao';
 import { MenssageriaService } from '../services/menssageria.service';
 import { Subscription } from 'rxjs';
+import { Observador } from './observador';
 
 const WEBSCOKET_URL="ws://localhost:8080/webserver";
 const MESSAGE_URL="/topic/respostas";
@@ -12,7 +13,7 @@ const MESSAGE_URL="/topic/respostas";
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css']
 })
-export class PrincipalComponent implements OnInit {
+export class PrincipalComponent implements OnInit, Observador {
 
   itens1 : ItemExecucao[];
   itens2 : ItemExecucao[];
@@ -37,22 +38,23 @@ export class PrincipalComponent implements OnInit {
   }
 
   enviaAcao() {
-    console.log("Enviando mensagem");
+    // console.log("Enviando mensagem");
+    this.limpaSaida();
     if (!this.validaComando()) {
       return;
     }
 
     let itensSelecionados = this.itemExecucaoService.getItensMarcados();
-    console.log('Total de itens selecioandos ' + itensSelecionados.length);
+   // console.log('Total de itens selecioandos ' + itensSelecionados.length);
     if (!this.validaSelecao(itensSelecionados)) {
       return;
     }
 
-    let itemSelecionado = {}; 
+    let itemSelecionado:ItemExecucao ; 
     for (let i=0; i < itensSelecionados.length; i++) {
       itemSelecionado = itensSelecionados[i];
       itemSelecionado.comando = this.comando;
-      console.log('iTEM ENVIADO ' + itemSelecionado);
+    //  console.log('iTEM ENVIADO ' + itemSelecionado);
       this.messageService.enviaMensagem(
         JSON.stringify (itemSelecionado)
       );
@@ -84,7 +86,7 @@ export class PrincipalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Iniciando formulario");
+    // console.log("Iniciando formulario");
     this.itens1 = this.itemExecucaoService.itens1;
     this.itens2 = this.itemExecucaoService.itens2;
     this.itens3 = this.itemExecucaoService.itens3;
@@ -92,13 +94,12 @@ export class PrincipalComponent implements OnInit {
   }
 
   executa() {
-    console.log('Executando comando '+ this.itens1);
-    console.log("total de itens marcados " + this.itemExecucaoService.getItensMarcados().length);
+  //  console.log("total de itens marcados " + this.itemExecucaoService.getItensMarcados().length);
     this.itemExecucaoService.getItensMarcados().forEach(item => console.log(`${item.host} - ${item.database}`));
   }
 
   marcaTodos() {
-    console.log(`Marca todos 2 ${this.marcaItens}`);
+  //  console.log(`Marca todos 2 ${this.marcaItens}`);
     this.itemExecucaoService.marcaItens(!this.marcaItens);
   }
 

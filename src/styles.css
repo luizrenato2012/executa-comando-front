@@ -24,7 +24,7 @@ textarea {
     resize: horizontal;
     width: 100%;
     min-height: 150px;
-    font-size: 50%;
+    font-size: 13px;
 }
 
 .btnPadrao {

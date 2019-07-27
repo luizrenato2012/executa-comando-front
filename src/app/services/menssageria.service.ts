@@ -24,7 +24,7 @@ export class MenssageriaService {
        //console.log('Conectado '+ frame); 
        this.stompClient.subscribe('/topic/respostas', (resposta) =>{
         let retorno =  JSON.parse(resposta.body);
-        console.log('Recebido ' + retorno);
+        // console.log('Recebido ' + retorno);
         this.observador.atualizaSaida(retorno.mensagem);
        });
     });
@@ -39,8 +39,6 @@ export class MenssageriaService {
 
 
   enviaMensagem(message: string) {
-    this.stompClient.send(
-      '/app/executa', 
-      {}, message );
+    this.stompClient.send('/app/executa', {}, message );
   }
 }
